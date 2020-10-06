@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19C57" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CardDM" representedClassName="CardDM" syncable="YES" codeGenerationType="class">
+        <attribute name="emoji" optional="YES" attributeType="String"/>
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isFaceUp" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isMatched" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="timesSeen" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="gameoOne" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GameDM" inverseName="cards" inverseEntity="GameDM"/>
+        <relationship name="gameTree" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GameDM" inverseName="secondCard" inverseEntity="GameDM"/>
+        <relationship name="gameTwo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GameDM" inverseName="firstCard" inverseEntity="GameDM"/>
+    </entity>
+    <entity name="GameDM" representedClassName="GameDM" syncable="YES" codeGenerationType="class">
+        <attribute name="playerPoints" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="cards" toMany="YES" deletionRule="Cascade" destinationEntity="CardDM" inverseName="gameoOne" inverseEntity="CardDM"/>
+        <relationship name="firstCard" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CardDM" inverseName="gameTwo" inverseEntity="CardDM"/>
+        <relationship name="secondCard" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CardDM" inverseName="gameTree" inverseEntity="CardDM"/>
+    </entity>
+    <elements>
+        <element name="CardDM" positionX="0" positionY="45" width="128" height="163"/>
+        <element name="GameDM" positionX="-359.06640625" positionY="46.65234375" width="128" height="103"/>
+    </elements>
+</model>
